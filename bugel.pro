@@ -12,7 +12,6 @@ TARGET = bugel
 TEMPLATE = app
 CONFIG += c++11
 
-QMAKE_CXXFLAGS += -wd4100
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -61,9 +60,9 @@ FORMS    += mainwindow.ui \
     timelinesettingsdialog.ui \
     projectsettingsdialog.ui
 
-INCLUDEPATH += C:/libraries/cpp/lua-5.2.3_Win32_dllw4_lib/include
-LIBS += C:/libraries/cpp/lua-5.2.3_Win32_dllw4_lib/liblua52.a
+INCLUDEPATH += /usr/include/lua5.2
+LIBS += /usr/lib/x86_64-linux-gnu/liblua5.2.so
 
-INCLUDEPATH += C:/libraries/cpp/LuaState/include
+INCLUDEPATH += LuaState/include
 
 QMAKE_CXXFLAGS += -D_CRT_SECURE_NO_WARNINGS

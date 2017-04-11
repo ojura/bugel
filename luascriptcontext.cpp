@@ -124,7 +124,7 @@ int addEventHelper(lua_State* state)
                 SAFE_LUA_GET(lua_isboolean, lua_toboolean, -2)
                 break;
             case QMetaType::Int:
-                SAFE_LUA_GET(lua_isnumber, lua_tointeger, -2);
+                SAFE_LUA_GET(lua_isnumber, (int) lua_tointeger, -2);
                 break;
             case QMetaType::Double:
                 SAFE_LUA_GET(lua_isnumber, lua_tonumber, -2);

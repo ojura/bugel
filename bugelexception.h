@@ -16,17 +16,21 @@ class BugelException : public std::exception
 public:
     std::string msg;
     const char* what() const throw() { return msg.c_str(); }
-    template<typename T>
-    friend BugelException& operator<<(BugelException& e, T msg);
 };
 
 template<typename T>
-BugelException& operator<<(BugelException& e, T appendMsg)
+BugelException& operator<<(BugelException&& e, const T appendMsg)
 {
     std::stringstream ss;
     ss << e.msg << appendMsg;
     e.msg = ss.str().c_str();
     return e;
+}
+
+template<typename T>
+BugelException& operator<<(BugelException& e, const T appendMsg)
+{
+    return std::move(e) << appendMsg;
 }
 
 std::ostream& operator<<(std::ostream& stream, const QString& str);

@@ -26,7 +26,7 @@ void TimelineWidget::wheelEvent(QWheelEvent* ev)
         // this should really snap to intervalLength()
         double scrollAmt = (int)(ev->delta() * -0.00035 * size().width() / pxPerSecond());
         if (scrollAmt < 1 && scrollAmt > -1)
-            scrollAmt = signbit((float)ev->delta()) ? 1 : -1;
+            scrollAmt = std::signbit((float)ev->delta()) ? 1 : -1;
         mViewOffset += scrollAmt;
     }
 
